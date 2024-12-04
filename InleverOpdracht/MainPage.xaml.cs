@@ -28,6 +28,12 @@ namespace InleverOpdracht
             // Navigate to LoginPage
             await Navigation.PushAsync(new LoginPage());
         }
+
+        private async void OnRegisterButtonClicked(object sender, EventArgs e)
+        {
+            // Navigate to RegisterPage
+            // await Navigation.PushAsync(new RegisterPage());
+        }
     }
 
 }
