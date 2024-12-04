@@ -1,4 +1,6 @@
-﻿namespace InleverOpdracht
+﻿using InleverOpdracht.Pages;
+
+namespace InleverOpdracht
 {
     public partial class MainPage : ContentPage
     {
@@ -19,6 +21,12 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+        }
+
+        private async void OnLoginButtonClicked(object sender, EventArgs e)
+        {
+            // Navigate to LoginPage
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverOpdracht.Pages.LoginPage"
+             Title="LoginPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
+
+            <!-- Title for the page -->
+            <Label Text="Login"
+                   FontSize="32"
+                   HorizontalOptions="Center"/>
+
+            <!-- Place to enter the username -->
+            <Entry x:Name="UsernameEntry"
+                     Placeholder="Username"
+                     Keyboard="Text"
+                     Text="{Binding Username}"/>
+
+            <!-- Place to enter the password -->
+            <Entry x:Name="PasswordEntry"
+                     Placeholder="Password"
+                     Keyboard="Text"
+                     IsPassword="True"
+                     Text="{Binding Password}"/>
+
+            <!-- Button to login -->
+            <Button x:Name="LoginButton"
+                    Command="{Binding LoginCommand}"
+                    HorizontalOptions="Fill"/>
+
+            <!-- Error Message -->
+            <Label Text="{Binding StatusMessage}" 
+                   TextColor="Red" 
+                   HorizontalOptions="Center" 
+                   IsVisible="{Binding IsStatusMessageVisible}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
