@@ -74,7 +74,12 @@ namespace InleverOpdracht.ViewModels
             }
 
             // Simulate a login process
-            if (Username == "user" && Password == "password")
+            if (Username == "User" && Password == "password")
+            {
+                StatusMessage = "Login successful!";
+                IsStatusMessageVisible = true;
+            }
+            else if (Username == _username && Password == _password)
             {
                 StatusMessage = "Login successful!";
                 IsStatusMessageVisible = true;
