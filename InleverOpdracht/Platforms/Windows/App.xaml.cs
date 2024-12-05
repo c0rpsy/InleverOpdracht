@@ -3,10 +3,10 @@ using Microsoft.Maui.Hosting;
 using Microsoft.UI.Xaml;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Controls;
-using InleverOpdracht;
+using Crow;
 
 
-namespace InleverOpdracht.WinUI
+namespace Crow.WinUI
 {
     public partial class App : MauiWinUIApplication
     {

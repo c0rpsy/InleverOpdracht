@@ -2,7 +2,7 @@
 using Android.Runtime;
 using Microsoft.Maui;
 
-namespace InleverOpdracht
+namespace Crow
 {
     [Application]
     public class MainApplication : MauiApplication

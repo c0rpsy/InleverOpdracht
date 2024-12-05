@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace InleverOpdracht.ViewModels
+namespace Crow.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {

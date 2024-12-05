@@ -1,6 +1,6 @@
-﻿using InleverOpdracht.Pages;
+﻿using Crow.Pages;
 
-namespace InleverOpdracht
+namespace Crow
 {
     public partial class MainPage : ContentPage
     {
@@ -9,18 +9,6 @@ namespace InleverOpdracht
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
         }
 
         private async void OnLoginButtonClicked(object sender, EventArgs e)
@@ -32,7 +20,7 @@ namespace InleverOpdracht
         private async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
             // Navigate to RegisterPage
-            // await Navigation.PushAsync(new RegisterPage());
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 

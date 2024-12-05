@@ -1,6 +1,6 @@
-using InleverOpdracht.ViewModels;
+using Crow.ViewModels;
 
-namespace InleverOpdracht.Pages
+namespace Crow.Pages
 {
     public partial class LoginPage : ContentPage
     {

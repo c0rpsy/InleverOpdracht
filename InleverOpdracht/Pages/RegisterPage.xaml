@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Crow.Pages.RegisterPage"
+             Title="RegisterPage">
+    <VerticalStackLayout>
+        <Label Text="Register"
+                FontSize="32"
+                HorizontalOptions="Center"/>
+
+        <!-- Place to enter the username -->
+        <Entry x:Name="UsernameEntry"
+                     Placeholder="Username"
+                     Keyboard="Text"
+                     Text="{Binding Username}"/>
+
+        <!-- Place to enter the email -->
+        <Entry x:Name="EmailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               Text="{Binding Email}"
+               Margin="0,0,0,10"/>
+
+        <!-- Place to enter the password -->
+        <Entry x:Name="PasswordEntry"
+                     Placeholder="Password"
+                     Keyboard="Text"
+                     IsPassword="True"
+                     Text="{Binding Password}"/>
+
+        <!-- Place to confirm the password -->
+        <Entry x:Name="ConfirmPasswordEntry"
+               Placeholder="Confirm Password"
+               Keyboard="Text"
+               IsPassword="True"
+               Text="{Binding ConfirmPassword}"
+               Margin="0,0,0,20"/>
+        
+        <!-- Registration button -->
+        <Button Text="Register"
+              Command="{Binding RegisterCommand}"
+              HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

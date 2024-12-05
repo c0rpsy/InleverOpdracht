@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InleverOpdracht.Classes
+namespace Crow.Classes
 {
     internal class User
     {

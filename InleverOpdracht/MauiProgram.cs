@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using InleverOpdracht.Pages;
+using Crow.Pages;
 
-namespace InleverOpdracht
+namespace Crow
 {
     public static class MauiProgram
     {
