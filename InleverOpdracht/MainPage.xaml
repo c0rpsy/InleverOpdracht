@@ -20,6 +20,10 @@
                 Text="CROW"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
+            <!-- Description of the app. -->
+            <Label 
+                Text="A place to take images that inspire."
+                HorizontalOptions="Center"/>
 
             <!-- Button for logging in -->
             <Button x:Name="LoginBtn"

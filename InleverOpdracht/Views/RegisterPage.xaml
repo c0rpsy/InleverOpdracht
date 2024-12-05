@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Crow.Pages.RegisterPage"
+             x:Class="Crow.Views.RegisterPage"
              Title="RegisterPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
         <Label Text="Register"
                 FontSize="32"
                 HorizontalOptions="Center"/>
@@ -40,5 +40,11 @@
         <Button Text="Register"
               Command="{Binding RegisterCommand}"
               HorizontalOptions="Center"/>
+        
+        <!-- Text notification if it worked or not-->
+        <Label x:Name="Notification"
+               Text="{Binding Statusmessage}"
+               HorizontalOptions="Center"
+               TextColor="Red"/>
     </VerticalStackLayout>
 </ContentPage>

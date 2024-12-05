@@ -1,6 +1,6 @@
 using Crow.ViewModels;
 
-namespace Crow.Pages
+namespace Crow.Views
 {
     public partial class LoginPage : ContentPage
     {
