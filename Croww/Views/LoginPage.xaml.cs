@@ -13,4 +13,20 @@ public partial class LoginPage : ContentPage
         InitializeComponent();
         BindingContext = new LoginViewModel();
      }
+
+    private async void OnLoginButtonClicked(object sender, EventArgs e)
+    {
+        string username = UsernameEntry.Text;
+        string password = PasswordEntry.Text;
+
+        if (username == HardcodedUsername && password == HardcodedPassword)
+        {
+            // Navigate to HomePage
+            await Navigation.PushAsync(new HomePage());
+        }
+        else
+        {
+            await DisplayAlert("Error", "Invalid username or password", "OK");
+        }
+    }
 }
