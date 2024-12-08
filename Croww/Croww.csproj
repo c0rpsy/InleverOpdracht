@@ -41,6 +41,8 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\Images\crow_svg.svg" />
+		<MauiIcon Include="Resources\Images\home2_icon.png" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -57,23 +59,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\crow_svg.svg" />
+	  <MauiImage Remove="Resources\Images\home2_icon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Splash\splashscreen.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Resources\Splash\splashscreen.jpg" />
+		<MauiSplashScreen Include="Resources\Splash\splashscreen.jpg" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Maui.Essentials" Version="*" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.100" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Models\" />
 	</ItemGroup>
+
+
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\CalendarPage.xaml">

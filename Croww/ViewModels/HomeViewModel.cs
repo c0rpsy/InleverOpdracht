@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Croww.ViewModels
+﻿namespace Croww.ViewModels
 {
     internal class HomeViewModel
     {
     }
-   
+
 }

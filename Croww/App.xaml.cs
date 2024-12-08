@@ -1,4 +1,6 @@
-﻿namespace Croww
+﻿using Croww.Views;
+
+namespace Croww
 {
     public partial class App : Application
     {

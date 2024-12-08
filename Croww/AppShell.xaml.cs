@@ -1,4 +1,7 @@
-﻿namespace Croww
+﻿using Croww.ViewModels;
+using Croww.Views;
+
+namespace Croww
 {
     public partial class AppShell : Shell
     {
@@ -6,5 +9,9 @@
         {
             InitializeComponent();
         }
+
+
+
+
     }
 }

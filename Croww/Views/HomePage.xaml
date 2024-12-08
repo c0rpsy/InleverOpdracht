@@ -2,10 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Croww.Views.HomePage"
+             Shell.FlyoutItemIsVisible="True"
              Title="HomePage"
-             BackgroundColor="{DynamicResource BackGround}"
-             Shell.NavBarIsVisible="False">
-             <!-- SOMEHOW this is THE way to remove the navbar that appshell forces on me. -->
+             BackgroundColor="{DynamicResource BackGround}">
              <!-- Same goes for the background color, somehow didnt show up with the styles and colors file. -->
              <!-- Shell.NavbarIsVisible=""-->
              <!-- TODO: Somehow get a Different navbar :p -->
@@ -15,9 +14,6 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Label 
-            Text="APP! PHOTO'S!! HERE!!"
-            />
 
 
     </VerticalStackLayout>

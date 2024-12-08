@@ -39,7 +39,8 @@
         <!-- Registration button -->
         <Button Text="Register"
            Command="{Binding RegisterCommand}"
-           HorizontalOptions="Center"/>
+           HorizontalOptions="Center"
+           Clicked="OnRegisterButtonClicked"/>
 
         <!-- Text notification if it worked or not-->
         <Label x:Name="Notification"
