@@ -1,5 +1,3 @@
-using Croww.ViewModels;
-
 namespace Croww.Views;
 
 public partial class RegisterPage : ContentPage

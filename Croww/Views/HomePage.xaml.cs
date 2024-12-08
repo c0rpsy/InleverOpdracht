@@ -1,9 +1,10 @@
-namespace Croww.Views;
+using Microsoft.Maui.Controls;
 
+namespace Croww.Views;
 public partial class HomePage : ContentPage
 {
-	public HomePage()
-	{
-		InitializeComponent();
-	}
+    public HomePage()
+    {
+        InitializeComponent();
+    }
 }
