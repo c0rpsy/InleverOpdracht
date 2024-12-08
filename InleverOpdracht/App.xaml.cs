@@ -1,4 +1,4 @@
-﻿namespace InleverOpdracht
+﻿namespace Crow
 {
     public partial class App : Application
     {
@@ -6,7 +6,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            // Makes the mainpage a navigationpage
+            MainPage = new NavigationPage(new MainPage());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Foundation;
+using Microsoft.Maui;
 
-namespace InleverOpdracht
+namespace Crow
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

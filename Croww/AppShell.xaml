@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Croww.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Croww"
+    xmlns:views="clr-namespace:Croww.Views"
+    xmlns:images="c:\users\user\source\repos\inleveropdracht\inleveropdracht\croww\resources\images\"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Croww">
+
+    <TabBar>
+        <Tab Title="Home" Icon="home2_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
+        </Tab>
+        <Tab Title="Theme" Icon="theme_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ThemePage}" Route="ThemePage" />
+        </Tab>
+        <Tab Title="Calendar" Icon="calendar_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate views:CalendarPage}" Route="CalendarPage" />
+        </Tab>
+        <Tab Title="Profile" Icon="profile_icon.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ProfilePage}" Route="ProfilePage" />
+        </Tab>
+    </TabBar>
+
+</Shell>

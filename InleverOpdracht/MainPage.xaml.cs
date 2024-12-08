@@ -1,4 +1,6 @@
-﻿namespace InleverOpdracht
+﻿using Crow.Views;
+
+namespace Crow
 {
     public partial class MainPage : ContentPage
     {
@@ -9,16 +11,16 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnLoginButtonClicked(object sender, EventArgs e)
         {
-            count++;
+            // Navigate to LoginPage
+            await Navigation.PushAsync(new LoginPage());
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private async void OnRegisterButtonClicked(object sender, EventArgs e)
+        {
+            // Navigate to RegisterPage
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 

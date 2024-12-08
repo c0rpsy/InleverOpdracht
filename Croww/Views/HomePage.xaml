@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Croww.Views.HomePage"
+             Shell.FlyoutItemIsVisible="True"
+             Title="HomePage"
+             BackgroundColor="{DynamicResource BackGround}">
+             <!-- Same goes for the background color, somehow didnt show up with the styles and colors file. -->
+             <!-- Shell.NavbarIsVisible=""-->
+             <!-- TODO: Somehow get a Different navbar :p -->
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
+
+    </VerticalStackLayout>
+</ContentPage>
