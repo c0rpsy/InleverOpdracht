@@ -3,7 +3,7 @@
              x:Class="Croww.Views.ThemePage"
              Title="Theme">
     <ContentPage.Background>
-        <!-- Gradient Background -->
+        <!-- Gradient Background, wrong gradient but research needed for the vision. -->
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="#74d680" Offset="0.0" />
             <GradientStop Color="#5fb3e5" Offset="1.0" />
@@ -11,14 +11,14 @@
     </ContentPage.Background>
 
     <VerticalStackLayout Padding="20">
-        <!-- Header Text -->
+        <!-- Header for the page. -->
         <Label Text="Choose a theme"
                FontSize="24"
                HorizontalOptions="Center"
                TextColor="White"
                Margin="0,20" />
 
-        <!-- Grid for Images -->
+        <!-- Grid for the themes to spawn in on. The images will eventually all function like buttons since they are supposed be buttons. -->
         <Grid ColumnDefinitions="*,*"
               RowDefinitions="*,*,*">
             <!-- Row 1 -->
