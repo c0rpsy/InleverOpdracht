@@ -8,13 +8,21 @@
              <!-- Same goes for the background color, somehow didnt show up with the styles and colors file. -->
              <!-- Shell.NavbarIsVisible=""-->
              <!-- TODO: Somehow get a Different navbar :p -->
-    <VerticalStackLayout>
-        <Label 
+    <Grid>
+        <Image Source="background_image.png"
+               Aspect="AspectFill"
+               Opacity="1"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"/>
+
+        <VerticalStackLayout>
+            <Label 
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
 
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

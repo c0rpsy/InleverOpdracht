@@ -3,66 +3,70 @@
              x:Class="Croww.Views.ThemePage"
              Title="Theme">
     <ContentPage.Background>
-        <!-- Gradient Background, wrong gradient but research needed for the vision. -->
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop Color="#74d680" Offset="0.0" />
-            <GradientStop Color="#5fb3e5" Offset="1.0" />
-        </LinearGradientBrush>
+        <AppThemeBinding Light="background_image.png" Dark="background_image.png" />
     </ContentPage.Background>
 
-    <VerticalStackLayout Padding="20">
-        <!-- Header for the page. -->
-        <Label Text="Choose a theme"
+    <Grid>
+        <Image Source="background_image.png"
+               Aspect="AspectFill"
+               Opacity="1"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"/>
+
+        <VerticalStackLayout Padding="20">
+            <!-- Header for the page. -->
+            <Label Text="Choose a theme"
                FontSize="24"
                HorizontalOptions="Center"
                TextColor="White"
                Margin="0,20" />
 
-        <!-- Grid for the themes to spawn in on. The images will eventually all function like buttons since they are supposed be buttons. -->
-        <Grid ColumnDefinitions="*,*"
+            <!-- Grid for the themes to spawn in on. The images will eventually all function like buttons since they are supposed be buttons. -->
+            <Grid ColumnDefinitions="*,*"
               RowDefinitions="*,*,*">
-            <!-- Row 1 -->
-            <Frame Grid.Row="0" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
-                <VerticalStackLayout>
-                    <ImageButton Source="pet_image.png" Aspect="AspectFill" HeightRequest="155" Clicked="Pets_Clicked" />
-                    <Label Text="Pets/Animals" FontSize="14" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
-            <Frame Grid.Row="0" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
-                <VerticalStackLayout>
-                    <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="155" Clicked="Nature_Clicked"/>
-                    <Label Text="Nature/Landscapes" FontSize="14" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
+                <!-- Row 1 -->
+                <Frame Grid.Row="0" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
+                    <VerticalStackLayout>
+                        <ImageButton Source="pet_image.png" Aspect="AspectFill" HeightRequest="155" Clicked="Pets_Clicked" />
+                        <Label Text="Pets/Animals" FontSize="14" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
+                    <VerticalStackLayout>
+                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="155" Clicked="Nature_Clicked"/>
+                        <Label Text="Nature/Landscapes" FontSize="14" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
 
-            <!-- Row 2 -->
-            <!-- Do not forget the actual working class behind the buttons (for 3 to 6) -->
-            <Frame Grid.Row="1" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
-                <VerticalStackLayout>
-                    <ImageButton Source="flower_image.png" Aspect="AspectFill" HeightRequest="155" />
-                    <Label Text="Flowers" FontSize="14" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
-            <Frame Grid.Row="1" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
-                <VerticalStackLayout>
-                    <ImageButton Source="macro_image.png" Aspect="AspectFill" HeightRequest="155" />
-                    <Label Text="Macro" FontSize="14" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
+                <!-- Row 2 -->
+                <!-- Do not forget the actual working class behind the buttons (for 3 to 6) -->
+                <Frame Grid.Row="1" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
+                    <VerticalStackLayout>
+                        <ImageButton Source="flower_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <Label Text="Flowers" FontSize="14" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
+                    <VerticalStackLayout>
+                        <ImageButton Source="macro_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <Label Text="Macro" FontSize="14" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
 
-            <!-- Row 3 -->
-            <Frame Grid.Row="2" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
-                <VerticalStackLayout>
-                    <ImageButton Source="people_image.png" Aspect="AspectFill" HeightRequest="155" />
-                    <Label Text="People" FontSize="14" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
-            <Frame Grid.Row="2" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
-                <VerticalStackLayout>
-                    <ImageButton Source="travel_image.png" Aspect="AspectFill" HeightRequest="155" />
-                    <Label Text="Travel" FontSize="14" HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
-        </Grid>
-    </VerticalStackLayout>
+                <!-- Row 3 -->
+                <Frame Grid.Row="2" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
+                    <VerticalStackLayout>
+                        <ImageButton Source="people_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <Label Text="People" FontSize="14" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
+                    <VerticalStackLayout>
+                        <ImageButton Source="travel_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <Label Text="Travel" FontSize="14" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
