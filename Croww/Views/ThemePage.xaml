@@ -3,10 +3,13 @@
              x:Class="Croww.Views.ThemePage"
              Title="Theme">
     <ContentPage.Background>
-        <!-- Gradient Background, wrong gradient but research needed for the vision. -->
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+        <!-- This is the gradient I planned on in the wireframes. -->
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
             <GradientStop Color="#74d680" Offset="0.0" />
-            <GradientStop Color="#5fb3e5" Offset="1.0" />
+            <GradientStop Color="#a1e0a1" Offset="0.25" />
+            <GradientStop Color="#c9f2c9" Offset="0.5" />
+            <GradientStop Color="#a1e0a1" Offset="0.75" />
+            <GradientStop Color="#74d680" Offset="1.0" />
         </LinearGradientBrush>
     </ContentPage.Background>
 
