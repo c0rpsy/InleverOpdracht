@@ -16,7 +16,7 @@
     <VerticalStackLayout Spacing="20" Padding="20">
         <!-- Profile Picture Section -->
         <Frame HeightRequest="150" WidthRequest="150" CornerRadius="75" BackgroundColor="White" HorizontalOptions="Center">
-            <Image x:Name="ProfileImage" Source="placeholder_profile.jpg" Aspect="AspectFill" />
+            <Image x:Name="ProfileImage" Source="placeholder_profile.jpg" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
         </Frame>
         <Button Text="Edit Profile Picture" Clicked="OnEditProfilePictureClicked" HorizontalOptions="Center" />
 
