@@ -3,7 +3,14 @@
              x:Class="Croww.Views.ThemePage"
              Title="Theme">
     <ContentPage.Background>
-        <AppThemeBinding Light="background_image.png" Dark="background_image.png" />
+        <!-- This is the gradient I planned on in the wireframes. -->
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#74d680" Offset="0.0" />
+            <GradientStop Color="#a1e0a1" Offset="0.25" />
+            <GradientStop Color="#c9f2c9" Offset="0.5" />
+            <GradientStop Color="#a1e0a1" Offset="0.75" />
+            <GradientStop Color="#74d680" Offset="1.0" />
+        </LinearGradientBrush>
     </ContentPage.Background>
 
     <Grid>
