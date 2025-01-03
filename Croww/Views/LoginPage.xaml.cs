@@ -21,7 +21,7 @@ public partial class LoginPage : ContentPage
         if (username == HardcodedUsername && password == HardcodedPassword)
         {
             // Navigate to HomePage
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new DashboardPage());
         }
         else
         {

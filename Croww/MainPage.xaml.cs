@@ -14,6 +14,7 @@ namespace Croww
         {
             // Navigate to LoginPage
             await Navigation.PushAsync(new LoginPage());
+
         }
 
         private async void OnRegisterButtonClicked(object sender, EventArgs e)
