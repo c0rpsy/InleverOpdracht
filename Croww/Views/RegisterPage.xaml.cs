@@ -1,17 +1,42 @@
-namespace Croww.Views;
+using Croww.Models;
+using Microsoft.Maui.Controls;
+using System;
 
-public partial class RegisterPage : ContentPage
+namespace Croww.Views
 {
-    public RegisterPage()
+    public partial class RegisterPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new Croww.ViewModels.RegisterViewModel();
-    }
+        public RegisterPage()
+        {
+            InitializeComponent();
+        }
 
-    private async void OnRegisterButtonClicked(object sender, EventArgs e)
-    {
-        await DisplayAlert("Success", "Account created", "OK");
-        await Navigation.PushAsync(new Croww.Views.LoginPage());
-    }
+        private async void OnRegisterButtonClicked(object sender, EventArgs e)
+        {
+            if (PasswordEntry.Text != ConfirmPasswordEntry.Text)
+            {
+                Notification.Text = "Passwords do not match.";
+                return;
+            }
 
+            var user = new UserProfile
+            {
+                Username = UsernameEntry.Text?.Trim(),
+                Email = EmailEntry.Text?.Trim(),
+                Password = PasswordEntry.Text?.Trim()
+            };
+
+            bool isRegistered = App.DatabaseService.RegisterUser(user);
+            if (isRegistered)
+            {
+                Notification.TextColor = Colors.Green;
+                Notification.Text = "Registration successful! Please log in.";
+                await Navigation.PushAsync(new LoginPage());
+            }
+            else
+            {
+                Notification.Text = "Email already exists. Please use a different email.";
+            }
+        }
+    }
 }

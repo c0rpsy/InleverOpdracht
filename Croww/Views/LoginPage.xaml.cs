@@ -10,22 +10,33 @@ public partial class LoginPage : ContentPage
     public LoginPage()
     {
         InitializeComponent();
-        BindingContext = new LoginViewModel();
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
-        string username = UsernameEntry.Text;
-        string password = PasswordEntry.Text;
+        // Trim the inputs to avoid issues with leading/trailing spaces
+        var username = UsernameEntry.Text?.Trim();
+        var password = PasswordEntry.Text?.Trim();
 
-        if (username == HardcodedUsername && password == HardcodedPassword)
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
-            // Navigate to HomePage
-            await Navigation.PushAsync(new DashboardPage());
+            await DisplayAlert("Error", "Please enter both username and password.", "OK");
+            return;
+        }
+
+        // Authenticate the user
+        var user = App.DatabaseService.AuthenticateUser(username, password);
+        if (user != null)
+        {
+            // Successful login
+            await DisplayAlert("Login Success", $"Welcome, {user.Username}!", "OK");
+            await Navigation.PushAsync(new ProfilePage());
         }
         else
         {
-            await DisplayAlert("Error", "Invalid username or password", "OK");
+            // Failed login
+            await DisplayAlert("Login Failed", "Invalid username or password.", "OK");
         }
     }
+
 }

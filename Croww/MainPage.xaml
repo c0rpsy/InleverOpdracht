@@ -18,7 +18,7 @@
             <!-- Title for the page -->
             <Label
                 Text="CROW"
-                Style="{StaticResource Headline}"
+                Style="{DynamicResource TitleStyle}"
                 SemanticProperties.HeadingLevel="Level1"/>
             <!-- Description of the app. -->
             <Label 
