@@ -1,6 +1,6 @@
 using Microsoft.Maui.Controls;
 using System;
-
+   
 namespace Croww.Views
 {
     public partial class ProfilePage : ContentPage

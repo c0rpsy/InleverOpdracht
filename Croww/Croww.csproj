@@ -60,7 +60,7 @@
 
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\crow_svg.svg" />
-	  <MauiImage Remove="Resources\Images\home2_icon.png" />
+		 <MauiImage Remove="Resources\Images\home2_icon.png" />  
 	</ItemGroup>
 
 	<ItemGroup>

@@ -4,9 +4,10 @@
              xmlns:views="clr-namespace:Croww.Views"
              x:Class="Croww.Views.DashboardPage"
              Title="DashboardPage"
-            BarTextColor="Transparent">
-    
-    <views:HomePage IconImageSource="home2_icon.png"/>
+            BarTextColor="Transparent"
+            BarBackgroundColor="#74d680">
+
+    <views:HomePage IconImageSource="main_icon.png"/>
     <views:ThemePage IconImageSource="theme_icon.png"/>
     <views:CalendarPage IconImageSource="calendar_icon.png"/>
     <views:ProfilePage IconImageSource="profile_icon.png"/>

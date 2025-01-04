@@ -14,12 +14,6 @@
     </ContentPage.Background>
 
     <Grid>
-        <Image Source="background_image.png"
-               Aspect="AspectFill"
-               Opacity="1"
-               VerticalOptions="FillAndExpand"
-               HorizontalOptions="FillAndExpand"/>
-
         <VerticalStackLayout Padding="20">
             <!-- Header for the page. -->
             <Label Text="Choose a theme"
