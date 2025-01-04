@@ -35,5 +35,6 @@
         <Label
             Text="We also need info and a profile picture and have this be editable."
             VerticalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
