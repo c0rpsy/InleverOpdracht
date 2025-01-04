@@ -25,4 +25,24 @@ public class DatabaseService
     {
         return _database.Table<UserProfile>().FirstOrDefault(u => u.Username == username && u.Password == password);
     }
+
+    public bool UpdateUserProfile(UserProfile user)
+    {
+        var existingUser = _database.Table<UserProfile>().FirstOrDefault(u => u.Id == user.Id);
+        if (existingUser == null)
+            return false; // User not found
+
+        _database.Update(user);
+        return true;
+    }
+
+    public UserProfile GetUserProfile(int id)
+    {
+        return _database.Table<UserProfile>().FirstOrDefault(u => u.Id == id);
+    }
+
+    public void SaveUserProfile(UserProfile userProfile)
+    {
+        _database.InsertOrReplace(userProfile);
+    }
 }

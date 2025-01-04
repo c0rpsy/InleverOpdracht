@@ -30,8 +30,9 @@ public partial class LoginPage : ContentPage
         var user = App.DatabaseService.AuthenticateUser(username, password);
         if (user != null)
         {
+            // Store the logged-in user's ID globally
+            App.CurrentUserId = user.Id;
             // Successful login
-            await DisplayAlert("Login Success", $"Welcome, {user.Username}!", "OK");
             await Navigation.PushAsync(new DashboardPage());
         }
         else

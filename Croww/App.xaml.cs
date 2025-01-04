@@ -9,6 +9,7 @@ namespace Croww
     public partial class App : Application
     {
         public static DatabaseService DatabaseService { get; private set; }
+        public static int CurrentUserId { get; set; }
 
         public App()
         {
@@ -20,9 +21,6 @@ namespace Croww
             DatabaseService = new DatabaseService(dbPath);
 
             MainPage = new NavigationPage(new MainPage());
-
-            // Pins the dashboard page to the bottom of the page. 
-            // AndroidSpecific.TabbedPage.SetToolbarPlacement(this, AndroidSpecific.ToolbarPlacement.Bottom);
 
         }
     }
