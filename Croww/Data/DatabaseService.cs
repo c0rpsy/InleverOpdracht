@@ -10,6 +10,7 @@ public class DatabaseService
     {
         _database = new SQLiteConnection(dbPath);
         _database.CreateTable<UserProfile>();
+        _database.CreateTable<Assignment>();
     }
 
     public bool RegisterUser(UserProfile user)
@@ -45,4 +46,20 @@ public class DatabaseService
     {
         _database.InsertOrReplace(userProfile);
     }
+
+    public List<Assignment> GetAssignmentsByTheme(string themeName)
+    {
+        return _database.Table<Assignment>().Where(a => a.Theme == themeName).ToList();
+    }
+
+    public void SavePhotoPathForAssignment(int assignmentId, string photoPath)
+    {
+        var assignment = _database.Table<Assignment>().FirstOrDefault(a => a.Id == assignmentId);
+        if (assignment != null)
+        {
+            assignment.PhotoPath = photoPath;
+            _database.Update(assignment);
+        }
+    }
 }
+

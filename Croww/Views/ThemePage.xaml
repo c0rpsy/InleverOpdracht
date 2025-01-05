@@ -33,13 +33,13 @@
                 <!-- Row 1 -->
                 <Frame Grid.Row="0" Grid.Column="0" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="pet_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" Clicked="Pets_Clicked" />
+                        <ImageButton Source="pet_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" CommandParameter="Pets" Clicked="Theme_Clicked" />
                         <Label Text="Pets/Animals" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
                 <Frame Grid.Row="0" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" Clicked="Nature_Clicked" />
+                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" Clicked="Theme_Clicked" />
                         <Label Text="Nature/Landscapes" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>

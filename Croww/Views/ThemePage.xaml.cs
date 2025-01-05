@@ -6,39 +6,14 @@ public partial class ThemePage : ContentPage
     {
         InitializeComponent();
     }
-
-    private async void Pets_Clicked(object sender, EventArgs e)
+    private async void Theme_Clicked(object sender, EventArgs e)
     {
-        bool answer = await DisplayAlert("Theme selection", "Do you want to choose this theme?", "Yes", "No");
+        // Get the theme name from the button (or assign it directly)
+        var themeName = (sender as ImageButton)?.CommandParameter?.ToString();
 
-        if (answer)
+        if (!string.IsNullOrEmpty(themeName))
         {
-            // Show success message
-            await DisplayAlert("Success", "You have successfully chosen this theme!", "OK");
-        }
-        else
-        {
-            // Simply close the dialog without further action
-            // Optionally show a message or log
-            Console.WriteLine("Theme selection cancelled by the user.");
-        }
-
-    }
-
-    private async void Nature_Clicked(object sender, EventArgs e)
-    {
-        bool answer = await DisplayAlert("Theme selection", "Do you want to choose this theme?", "Yes", "No");
-
-        if (answer)
-        {
-            // Show success message
-            await DisplayAlert("Success", "You have successfully chosen this theme!", "OK");
-        }
-        else
-        {
-            // Simply close the dialog without further action
-            // Optionally show a message or log
-            Console.WriteLine("Theme selection cancelled by the user.");
+            await Navigation.PushAsync(new AssignmentPage(themeName));
         }
     }
 
