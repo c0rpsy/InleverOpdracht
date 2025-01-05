@@ -4,28 +4,42 @@ namespace Croww.Views;
 
 public partial class LoginPage : ContentPage
 {
-    private const string HardcodedUsername = "admin";
-    private const string HardcodedPassword = "password123";
+    //private const string HardcodedUsername = "admin";
+    //private const string HardcodedPassword = "password123";
 
     public LoginPage()
     {
         InitializeComponent();
-        BindingContext = new LoginViewModel();
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
-        string username = UsernameEntry.Text;
-        string password = PasswordEntry.Text;
+        // Trim the inputs to avoid issues with leading/trailing spaces
+        // Just in case they hit space as a habit (like me)
+        var username = UsernameEntry.Text?.Trim();
+        var password = PasswordEntry.Text?.Trim();
 
-        if (username == HardcodedUsername && password == HardcodedPassword)
+        // Checks if the fields are filled
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
-            // Navigate to HomePage
+            await DisplayAlert("Fields can't be empty", "Please enter both username and password.", "OK");
+            return;
+        }
+
+        // Authenticate that user exists
+        var user = App.DatabaseService.AuthenticateUser(username, password);
+        if (user != null)
+        {
+            // Store the logged-in user's ID globally
+            App.CurrentUserId = user.Id;
+            // Successful login
             await Navigation.PushAsync(new DashboardPage());
         }
         else
         {
-            await DisplayAlert("Error", "Invalid username or password", "OK");
+            // Failed login
+            await DisplayAlert("Login Failed", "Invalid username or password.", "OK");
         }
     }
+
 }

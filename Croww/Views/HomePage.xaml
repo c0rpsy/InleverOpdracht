@@ -3,17 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Croww.Views.HomePage"
              Shell.FlyoutItemIsVisible="True"
-             Title="HomePage"
-             BackgroundColor="{DynamicResource BackGround}">
-             <!-- Same goes for the background color, somehow didnt show up with the styles and colors file. -->
-             <!-- Shell.NavbarIsVisible=""-->
-             <!-- TODO: Somehow get a Different navbar :p -->
+             Title="HomePage">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#74d680" Offset="0.0" />
+            <GradientStop Color="#a1e0a1" Offset="0.25" />
+            <GradientStop Color="#c9f2c9" Offset="0.5" />
+            <GradientStop Color="#a1e0a1" Offset="0.75" />
+            <GradientStop Color="#74d680" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
     <Grid>
-        <Image Source="background_image.png"
-               Aspect="AspectFill"
-               Opacity="1"
-               VerticalOptions="FillAndExpand"
-               HorizontalOptions="FillAndExpand"/>
+
 
         <VerticalStackLayout>
             <Label 

@@ -60,7 +60,7 @@
 
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\crow_svg.svg" />
-	  <MauiImage Remove="Resources\Images\home2_icon.png" />
+		 <MauiImage Remove="Resources\Images\home2_icon.png" />  
 	</ItemGroup>
 
 	<ItemGroup>
@@ -78,10 +78,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.100" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Models\" />
 	</ItemGroup>
 
 

@@ -18,7 +18,20 @@
         <Frame HeightRequest="150" WidthRequest="150" CornerRadius="75" BackgroundColor="White" HorizontalOptions="Center">
             <Image x:Name="ProfileImage" Source="placeholder_profile.jpg" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
         </Frame>
+
         <Button Text="Edit Profile Picture" Clicked="OnEditProfilePictureClicked" HorizontalOptions="Center" />
+        
+        <!-- Username Section -->
+        <Label Text="Username" FontSize="16" TextColor="Black" />
+        <Label x:Name="UsernameLabel" FontSize="20" TextColor="Black" />
+
+        <!-- Bio Section -->
+        <Label Text="Bio" FontSize="16" TextColor="Black" />
+        <Editor x:Name="BioEditor" Placeholder="Enter your bio..." HeightRequest="100" TextColor="Black" />
+
+        <!-- Save Button -->
+        <Button Text="Save Changes" Clicked="OnSaveChangesClicked" BackgroundColor="#4CAF50" TextColor="White" HorizontalOptions="Center" />
+
 
         <!-- Profile Information Section -->
         <Label 
@@ -35,5 +48,6 @@
         <Label
             Text="We also need info and a profile picture and have this be editable."
             VerticalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
