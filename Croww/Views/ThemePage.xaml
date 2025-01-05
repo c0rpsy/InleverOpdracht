@@ -24,50 +24,55 @@
 
             <!-- Grid for the themes to spawn in on. The images will eventually all function like buttons since they are supposed be buttons. -->
             <Grid ColumnDefinitions="*,*"
-              RowDefinitions="*,*,*">
+                  RowDefinitions="Auto,Auto,Auto"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  Padding="10"
+                  RowSpacing="20"
+                  ColumnSpacing="20">
                 <!-- Row 1 -->
-                <Frame Grid.Row="0" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <Frame Grid.Row="0" Grid.Column="0" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="pet_image.png" Aspect="AspectFill" HeightRequest="155" Clicked="Pets_Clicked" />
+                        <ImageButton Source="pet_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" Clicked="Pets_Clicked" />
                         <Label Text="Pets/Animals" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
-                <Frame Grid.Row="0" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <Frame Grid.Row="0" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="155" Clicked="Nature_Clicked"/>
+                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" Clicked="Nature_Clicked" />
                         <Label Text="Nature/Landscapes" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
 
                 <!-- Row 2 -->
-                <!-- Do not forget the actual working class behind the buttons (for 3 to 6) -->
-                <Frame Grid.Row="1" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <Frame Grid.Row="1" Grid.Column="0" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="flower_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <ImageButton Source="flower_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
                         <Label Text="Flowers" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
-                <Frame Grid.Row="1" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <Frame Grid.Row="1" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="macro_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <ImageButton Source="macro_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
                         <Label Text="Macro" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
 
                 <!-- Row 3 -->
-                <Frame Grid.Row="2" Grid.Column="0" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <Frame Grid.Row="2" Grid.Column="0" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="people_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <ImageButton Source="people_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
                         <Label Text="People" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
-                <Frame Grid.Row="2" Grid.Column="1" Padding="10" CornerRadius="10" BackgroundColor="White">
+                <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="travel_image.png" Aspect="AspectFill" HeightRequest="155" />
+                        <ImageButton Source="travel_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
                         <Label Text="Travel" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
             </Grid>
+
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

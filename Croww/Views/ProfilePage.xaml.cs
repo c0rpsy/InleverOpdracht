@@ -94,6 +94,20 @@ namespace Croww.Views
             }
         }
 
+        private void OnSaveChangesClicked(object sender, EventArgs e)
+        {
+            if (_userProfile != null)
+            {
+                // Update bio and save to database
+                _userProfile.Bio = BioEditor.Text?.Trim();
+                App.DatabaseService.SaveUserProfile(_userProfile);
+                DisplayAlert("Profile Saved", "Your changes have been saved.", "OK");
+            }
+            else
+            {
+                Console.WriteLine("Failed to save changes: UserProfile is null.");
+            }
+        }
 
     }
 }
