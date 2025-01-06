@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Crow.MVVM.Views.RegisterPage"
+             Title="RegisterPage">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#74d680" Offset="0.0" />
+            <GradientStop Color="#a1e0a1" Offset="0.25" />
+            <GradientStop Color="#c9f2c9" Offset="0.5" />
+            <GradientStop Color="#a1e0a1" Offset="0.75" />
+            <GradientStop Color="#74d680" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
+        <Label Text="Register"
+         FontSize="32"
+         HorizontalOptions="Center"/>
+
+        <!-- Place to enter the username -->
+        <Entry x:Name="UsernameEntry"
+              Placeholder="Username"
+              Keyboard="Text"
+              Text="{Binding Username}"/>
+
+        <!-- Place to enter the email -->
+        <Entry x:Name="EmailEntry"
+        Placeholder="Email"
+        Keyboard="Email"
+        Text="{Binding Email}"
+        Margin="0,0,0,10"/>
+
+        <!-- Place to enter the password -->
+        <Entry x:Name="PasswordEntry"
+              Placeholder="Password"
+              Keyboard="Text"
+              IsPassword="True"
+              Text="{Binding Password}"/>
+
+        <!-- Place to confirm the password -->
+        <Entry x:Name="ConfirmPasswordEntry"
+        Placeholder="Confirm Password"
+        Keyboard="Text"
+        IsPassword="True"
+        Text="{Binding ConfirmPassword}"
+        Margin="0,0,0,20"/>
+
+        <!-- Registration button -->
+        <Button Text="Register"
+       Command="{Binding RegisterCommand}"
+       HorizontalOptions="Center"
+       Clicked="OnRegisterButtonClicked"/>
+
+        <!-- Text notification if it worked or not-->
+        <Label x:Name="Notification"
+        Text="{Binding Statusmessage}"
+        HorizontalOptions="Center"
+        TextColor="Red"/>
+    </VerticalStackLayout>
+</ContentPage>
