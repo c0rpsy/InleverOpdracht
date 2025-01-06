@@ -39,7 +39,7 @@
                 </Frame>
                 <Frame Grid.Row="0" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" Clicked="Theme_Clicked" />
+                        <ImageButton Source="nature_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" CommandParameter="Nature" Clicked="Theme_Clicked" />
                         <Label Text="Nature/Landscapes" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
@@ -47,13 +47,13 @@
                 <!-- Row 2 -->
                 <Frame Grid.Row="1" Grid.Column="0" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="flower_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
+                        <ImageButton Source="flower_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" CommandParameter="Flower" Clicked="Theme_Clicked" />
                         <Label Text="Flowers" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
                 <Frame Grid.Row="1" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="macro_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
+                        <ImageButton Source="macro_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" CommandParameter="Macro" Clicked="Theme_Clicked"/>
                         <Label Text="Macro" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
@@ -61,13 +61,13 @@
                 <!-- Row 3 -->
                 <Frame Grid.Row="2" Grid.Column="0" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="people_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
+                        <ImageButton Source="people_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" CommandParameter="People" Clicked="Theme_Clicked"/>
                         <Label Text="People" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
                 <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="15" BackgroundColor="White">
                     <VerticalStackLayout>
-                        <ImageButton Source="travel_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" />
+                        <ImageButton Source="travel_image.png" Aspect="AspectFill" HeightRequest="150" WidthRequest="150" CornerRadius="15" CommandParameter="Travel" Clicked="Theme_Clicked"/>
                         <Label Text="Travel" FontSize="14" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>

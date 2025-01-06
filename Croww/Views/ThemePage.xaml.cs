@@ -16,6 +16,4 @@ public partial class ThemePage : ContentPage
             await Navigation.PushAsync(new AssignmentPage(themeName));
         }
     }
-
-
 }
