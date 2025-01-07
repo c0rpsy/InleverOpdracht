@@ -1,96 +1,118 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
+using Crow.MVVM.Models;
 
-namespace Crow.MVVM.ViewModels
+public class RegisterViewModel : BaseViewModel
 {
-    public class RegisterViewModel : INotifyPropertyChanged
+    public UserProfile UserProfile { get; set; }
+
+    // Registration Properties
+    private string _username;
+    public string Username
     {
-        private string _username;
-        private string _email;
-        private string _password;
-        private string _confirmPassword;
+        get => _username;
+        set => SetProperty(ref _username, value);
+    }
 
-        public string Username
-        {
-            get => _username;
-            set
-            {
-                if (_username != value)
-                {
-                    _username = value;
-                    OnPropertyChanged(nameof(Username));
-                }
-            }
-        }
-        public string Email
-        {
-            get => _email;
-            set
-            {
-                if (_email != value)
-                {
-                    _email = value;
-                    OnPropertyChanged(nameof(Email));
-                }
-            }
-        }
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                if (_password != value)
-                {
-                    _password = value;
-                    OnPropertyChanged(nameof(Password));
-                }
-            }
-        }
-        public string ConfirmPassword
-        {
-            get => _confirmPassword;
-            set
-            {
-                if (_confirmPassword != value)
-                {
-                    _confirmPassword = value;
-                    OnPropertyChanged(nameof(ConfirmPassword));
-                }
-            }
-        }
-        public ICommand RegisterCommand { get; }
+    private string _email;
+    public string Email
+    {
+        get => _email;
+        set => SetProperty(ref _email, value);
+    }
 
-        public RegisterViewModel()
+    private string _password;
+    public string Password
+    {
+        get => _password;
+        set => SetProperty(ref _password, value);
+    }
+
+    private string _confirmPassword;
+    public string ConfirmPassword
+    {
+        get => _confirmPassword;
+        set => SetProperty(ref _confirmPassword, value);
+    }
+
+    private string _notificationMessage;
+    public string NotificationMessage
+    {
+        get => _notificationMessage;
+        set => SetProperty(ref _notificationMessage, value);
+    }
+
+    // Commands
+    public ICommand RegisterCommand { get; }
+
+    private readonly IUserRepository _userRepository;
+
+    // Constructor
+    public RegisterViewModel(IUserRepository userRepository)
+    {
+        _userRepository = userRepository;
+
+        // Initialize Commands
+        RegisterCommand = new Command(OnRegister, CanRegister);
+    }
+
+    private bool CanRegister()
+    {
+        // Validate registration fields
+        return !string.IsNullOrWhiteSpace(Username) &&
+               !string.IsNullOrWhiteSpace(Email) &&
+               !string.IsNullOrWhiteSpace(Password) &&
+               Password == ConfirmPassword;
+    }
+
+    private void OnRegister()
+    {
+        // Attempt to register the user
+        var userProfile = new UserProfile
         {
-            RegisterCommand = new Command(OnRegister);
+            Username = Username,
+            Email = Email,
+            Password = Password
+        };
+
+        var success = _userRepository.RegisterUser(userProfile);
+        if (success)
+        {
+            NotificationMessage = "Registration successful!";
+            Username = string.Empty;
+            Email = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+        }
+        else
+        {
+            NotificationMessage = "Registration failed. Username or email already exists.";
+        }
+    }
+}
+
+// Repository Interface for Dependency Injection
+public interface IUserRepository
+{
+    bool RegisterUser(UserProfile user);
+}
+
+// Example Implementation of Repository
+public class UserRepository : IUserRepository
+{
+    private readonly List<UserProfile> _users = new List<UserProfile>();
+
+    public bool RegisterUser(UserProfile user)
+    {
+        if (_users.Any(u => u.Username == user.Username || u.Email == user.Email))
+        {
+            // User already exists
+            return false;
         }
 
-        private void OnRegister()
-        {
-            // Need to add Registration Logic here
-            if (Password != ConfirmPassword)
-            {
-                // Handle error when the passwords don't match up
-                Application.Current.MainPage.DisplayAlert("Error", "Passwords do not match", "OK");
-                return;
-            }
-            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
-            {
-                // Handle error when the fields are empty, something that should not happen
-                Application.Current.MainPage.DisplayAlert("Error", "Please fill in all fields", "OK");
-                return;
-            }
-
-            // Need more Registration logic here, with an API probably. 
-            Application.Current.MainPage.DisplayAlert("Success", "Registration successful", "OK");
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        _users.Add(user);
+        return true;
     }
 }

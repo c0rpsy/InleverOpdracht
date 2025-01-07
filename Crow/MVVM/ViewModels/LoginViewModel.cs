@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Crow.MVVM.Views;
 
 namespace Crow.MVVM.ViewModels
 {

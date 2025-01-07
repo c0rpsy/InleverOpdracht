@@ -75,10 +75,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Repositories\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="MVVM\Views\AssignmentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
