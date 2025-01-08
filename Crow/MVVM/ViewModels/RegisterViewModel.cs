@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Crow.MVVM.Models;
+using Crow.Interfaces;
+using Crow.Repositories;
 
 public class RegisterViewModel : BaseViewModel
 {
@@ -67,7 +69,7 @@ public class RegisterViewModel : BaseViewModel
                Password == ConfirmPassword;
     }
 
-    private void OnRegister()
+    private async void OnRegister()
     {
         // Attempt to register the user
         var userProfile = new UserProfile
@@ -77,7 +79,7 @@ public class RegisterViewModel : BaseViewModel
             Password = Password
         };
 
-        var success = _userRepository.RegisterUser(userProfile);
+        var success = await _userRepository.RegisterUserAsync(userProfile);
         if (success)
         {
             NotificationMessage = "Registration successful!";
@@ -91,28 +93,6 @@ public class RegisterViewModel : BaseViewModel
             NotificationMessage = "Registration failed. Username or email already exists.";
         }
     }
-}
 
-// Repository Interface for Dependency Injection
-public interface IUserRepository
-{
-    bool RegisterUser(UserProfile user);
-}
 
-// Example Implementation of Repository
-public class UserRepository : IUserRepository
-{
-    private readonly List<UserProfile> _users = new List<UserProfile>();
-
-    public bool RegisterUser(UserProfile user)
-    {
-        if (_users.Any(u => u.Username == user.Username || u.Email == user.Email))
-        {
-            // User already exists
-            return false;
-        }
-
-        _users.Add(user);
-        return true;
-    }
 }

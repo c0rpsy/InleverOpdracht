@@ -1,12 +1,7 @@
-﻿using Crow.MVVM.Models;
+﻿using System.Threading.Tasks;
 using SQLite;
 using Crow.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Crow.MVVM.Models;
 
 namespace Crow.Repositories
 {
@@ -20,6 +15,7 @@ namespace Crow.Repositories
             _database.CreateTableAsync<UserProfile>().Wait();
         }
 
+        // Register a new user if no existing user has the same username or email.
         public async Task<bool> RegisterUserAsync(UserProfile user)
         {
             var existingUser = await _database.Table<UserProfile>()
@@ -36,12 +32,27 @@ namespace Crow.Repositories
             return true;
         }
 
-        public Task<bool> RegisterUser(UserProfile user)
+        // Returns the first user in the table (null if none exist).
+        public async Task<UserProfile> GetUserProfileAsync()
         {
-            return RegisterUserAsync(user);
+            return await _database.Table<UserProfile>()
+                                  .FirstOrDefaultAsync();
+        }
+
+        // Inserts or updates the provided user profile.
+        public async Task SaveUserProfileAsync(UserProfile user)
+        {
+            var existingUser = await _database.Table<UserProfile>()
+                                              .Where(u => u.Id == user.Id)
+                                              .FirstOrDefaultAsync();
+            if (existingUser != null)
+            {
+                await _database.UpdateAsync(user);
+            }
+            else
+            {
+                await _database.InsertAsync(user);
+            }
         }
     }
-
-
-
 }

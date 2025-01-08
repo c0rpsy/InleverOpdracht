@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Crow.Interfaces;
+using Crow.Repositories;
 
 namespace Crow
 {
@@ -7,6 +9,13 @@ namespace Crow
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
+            builder.Services.AddSingleton<IUserRepository>(provider =>
+            {
+                var databasePath = Path.Combine(FileSystem.AppDataDirectory, "app_database.db");
+                return new UserRepository(databasePath);
+            });
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -15,8 +24,9 @@ namespace Crow
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
