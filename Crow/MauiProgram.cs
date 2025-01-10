@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Crow.Interfaces;
 using Crow.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Crow
 {
@@ -15,6 +16,13 @@ namespace Crow
                 var databasePath = Path.Combine(FileSystem.AppDataDirectory, "app_database.db");
                 return new UserRepository(databasePath);
             });
+
+            builder.Services.AddSingleton<App>((services) =>
+            {
+                var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Themes.db");
+                return new App(dbPath);
+            });
+
 
             builder
                 .UseMauiApp<App>()

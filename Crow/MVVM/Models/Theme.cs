@@ -8,6 +8,8 @@ namespace Crow.MVVM.Models
 {
     public class Theme
     {
+        public int Id { get; set; }
         public string Name { get; set; }
+        public string IconPath { get; set; }
     }
 }
