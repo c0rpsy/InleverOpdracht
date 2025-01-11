@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Crow.MVVM.ViewModels"
              x:Class="Crow.MVVM.Views.RegisterPage"
              Title="RegisterPage">
     <ContentPage.Background>
@@ -48,13 +49,13 @@
         <!-- Registration button -->
         <Button Text="Register"
        Command="{Binding RegisterCommand}"
-       HorizontalOptions="Center"
-       Clicked="OnRegisterButtonClicked"/>
+       HorizontalOptions="Center"/>
 
         <!-- Text notification if it worked or not-->
         <Label x:Name="Notification"
-        Text="{Binding Statusmessage}"
+        Text="{Binding NotificationMessage}"
         HorizontalOptions="Center"
         TextColor="Red"/>
     </VerticalStackLayout>
 </ContentPage>
+

@@ -35,8 +35,7 @@
             <!-- Button to login -->
             <Button x:Name="LoginButton"
                  Command="{Binding LoginCommand}"
-                 HorizontalOptions="Fill"
-                 Clicked="OnLoginButtonClicked"/>
+                 HorizontalOptions="Fill"/>
 
             <!-- Error Message -->
             <Label Text="{Binding StatusMessage}" 
