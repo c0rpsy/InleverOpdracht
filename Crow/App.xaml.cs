@@ -10,7 +10,7 @@ public partial class App : Application
     public static DatabaseService DatabaseService { get; private set; }
 
 
-    public App(IServiceProvider services)
+    public App(IServiceProvider services, string dbPath)
     {
         InitializeComponent();
 

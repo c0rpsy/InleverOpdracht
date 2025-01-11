@@ -7,7 +7,7 @@ using SQLite;
 
 namespace Crow.MVVM.Models
 {
-    public class Assignments
+    public class Assignment
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

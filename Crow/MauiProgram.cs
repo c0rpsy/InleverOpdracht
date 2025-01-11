@@ -20,9 +20,8 @@ namespace Crow
             builder.Services.AddSingleton<App>((services) =>
             {
                 var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Themes.db");
-                return new App(dbPath);
+                return new App(services, dbPath);
             });
-
 
             builder
                 .UseMauiApp<App>()
@@ -31,7 +30,6 @@ namespace Crow
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
 
 #if DEBUG
             builder.Logging.AddDebug();
