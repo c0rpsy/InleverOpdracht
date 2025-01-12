@@ -4,6 +4,16 @@
              xmlns:vm="clr-namespace:Crow.ViewModels" 
              x:Class="Crow.MVVM.Views.ThemePage"
              Title="ThemePage">
+    <ContentPage.Background>
+        <!-- Gradient Background -->
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#74d680" Offset="0.0" />
+            <GradientStop Color="#a1e0a1" Offset="0.25" />
+            <GradientStop Color="#c9f2c9" Offset="0.5" />
+            <GradientStop Color="#a1e0a1" Offset="0.75" />
+            <GradientStop Color="#74d680" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
     <ContentPage.BindingContext>
         <vm:ThemeViewModel />
     </ContentPage.BindingContext>
