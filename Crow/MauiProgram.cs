@@ -1,41 +1,38 @@
 ﻿using Microsoft.Extensions.Logging;
 using Crow.Interfaces;
 using Crow.Repositories;
-using Microsoft.Extensions.DependencyInjection;
+using Crow;
 
-namespace Crow
+public static class MauiProgram
 {
-    public static class MauiProgram
+    public static MauiApp CreateMauiApp()
     {
-        public static MauiApp CreateMauiApp()
+        var builder = MauiApp.CreateBuilder();
+
+        // Register dbPath as a service
+        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "app_database.db");
+        builder.Services.AddSingleton(dbPath);
+
+        // Register App
+        builder.Services.AddSingleton<App>();
+
+        builder.Services.AddSingleton<IUserRepository>(provider =>
         {
-            var builder = MauiApp.CreateBuilder();
+            return new UserRepository(dbPath);
+        });
 
-            builder.Services.AddSingleton<IUserRepository>(provider =>
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
             {
-                var databasePath = Path.Combine(FileSystem.AppDataDirectory, "app_database.db");
-                return new UserRepository(databasePath);
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
-            builder.Services.AddSingleton<App>((services) =>
-            {
-                var dbPath = Path.Combine(FileSystem.AppDataDirectory, "Themes.db");
-                return new App(services, dbPath);
-            });
-
-            builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
 
 #if DEBUG
-            builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
-        }
+        return builder.Build();
     }
 }

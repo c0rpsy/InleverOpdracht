@@ -4,95 +4,60 @@ using System.Linq;
 using System.Windows.Input;
 using Crow.MVVM.Models;
 using Crow.Interfaces;
+using Crow.MVVM.Views;
 using Crow.Repositories;
 
-public class RegisterViewModel : BaseViewModel
+namespace Crow.MVVM.ViewModels
 {
-    public UserProfile UserProfile { get; set; }
-
-    // Registration Properties
-    private string _username;
-    public string Username
+    public class RegisterViewModel : BaseViewModel
     {
-        get => _username;
-        set => SetProperty(ref _username, value);
-    }
+        public ICommand RegisterCommand { get; }
 
-    private string _email;
-    public string Email
-    {
-        get => _email;
-        set => SetProperty(ref _email, value);
-    }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
 
-    private string _password;
-    public string Password
-    {
-        get => _password;
-        set => SetProperty(ref _password, value);
-    }
-
-    private string _confirmPassword;
-    public string ConfirmPassword
-    {
-        get => _confirmPassword;
-        set => SetProperty(ref _confirmPassword, value);
-    }
-
-    private string _notificationMessage;
-    public string NotificationMessage
-    {
-        get => _notificationMessage;
-        set => SetProperty(ref _notificationMessage, value);
-    }
-
-    // Commands
-    public ICommand RegisterCommand { get; }
-
-    private readonly IUserRepository _userRepository;
-
-    // Constructor
-    public RegisterViewModel(IUserRepository userRepository)
-    {
-        _userRepository = userRepository;
-
-        // Initialize Commands
-        RegisterCommand = new Command(OnRegister, CanRegister);
-    }
-
-    private bool CanRegister()
-    {
-        // Validate registration fields
-        return !string.IsNullOrWhiteSpace(Username) &&
-               !string.IsNullOrWhiteSpace(Email) &&
-               !string.IsNullOrWhiteSpace(Password) &&
-               Password == ConfirmPassword;
-    }
-
-    private async void OnRegister()
-    {
-        // Attempt to register the user
-        var userProfile = new UserProfile
+        public RegisterViewModel()
         {
-            Username = Username,
-            Email = Email,
-            Password = Password
-        };
-
-        var success = await _userRepository.RegisterUserAsync(userProfile);
-        if (success)
-        {
-            NotificationMessage = "Registration successful!";
-            Username = string.Empty;
-            Email = string.Empty;
-            Password = string.Empty;
-            ConfirmPassword = string.Empty;
+            RegisterCommand = new Command(OnRegister);
         }
-        else
+
+        private async void OnRegister()
         {
-            NotificationMessage = "Registration failed. Username or email already exists.";
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Please fill in all fields.", "OK");
+                return;
+            }
+
+            if (Password != ConfirmPassword)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Passwords do not match.", "OK");
+                return;
+            }
+
+            var user = new UserProfile
+            {
+                Username = Username.Trim(),
+                Email = Email.Trim(),
+                Password = Password.Trim()
+            };
+
+            bool isRegistered = await App.DatabaseService.RegisterUser(user);
+
+            if (isRegistered)
+            {
+                await App.Current.MainPage.DisplayAlert("Success", "Registration successful!", "OK");
+
+                // Redirect to DashboardPage
+                await App.Current.MainPage.Navigation.PushAsync(new DashboardPage());
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Email already exists.", "OK");
+            }
         }
+
     }
-
-
 }

@@ -13,6 +13,9 @@
             <GradientStop Color="#74d680" Offset="1.0" />
         </LinearGradientBrush>
     </ContentPage.Background>
+    <ContentPage.BindingContext>
+        <vm:RegisterViewModel />
+    </ContentPage.BindingContext>
     <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
         <Label Text="Register"
          FontSize="32"

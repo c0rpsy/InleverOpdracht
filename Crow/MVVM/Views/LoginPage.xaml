@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Crow.MVVM.ViewModels"
              x:Class="Crow.MVVM.Views.LoginPage"
              Title="LoginPage">
     <ContentPage.Background>
@@ -12,6 +13,9 @@
             <GradientStop Color="#74d680" Offset="1.0" />
         </LinearGradientBrush>
     </ContentPage.Background>
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
             <!-- Title for the page -->

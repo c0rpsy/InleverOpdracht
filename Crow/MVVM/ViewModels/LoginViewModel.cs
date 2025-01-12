@@ -51,27 +51,29 @@ namespace Crow.MVVM.ViewModels
         public ICommand LoginCommand { get; }
         public LoginViewModel()
         {
-            LoginCommand = new Command(ExecuteLogin);
+            LoginCommand = new Command(OnLogin);
         }
-        private void ExecuteLogin()
+        private async void OnLogin()
         {
-            // Validate the username and password
+            // Validate user input
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
-                StatusMessage = "Please enter a username and password.";
-                IsStatusMessageVisible = true;
+                await App.Current.MainPage.DisplayAlert("Error", "Please enter both username and password.", "OK");
                 return;
             }
-            // Check if the username and password are correct
-            if (Username == "admin" && Password == "admin")
+
+            // Authenticate user
+            var user = App.DatabaseService.AuthenticateUser(Username, Password);
+
+            if (user != null)
             {
-                // Navigate to the home page
-                App.Current.MainPage = new HomePage();
+                // Login successful, navigate to DashboardPage
+                App.Current.MainPage = new NavigationPage(new DashboardPage());
             }
             else
             {
-                StatusMessage = "Invalid username or password.";
-                IsStatusMessageVisible = true;
+                // Login failed, show error
+                await App.Current.MainPage.DisplayAlert("Error", "Invalid username or password.", "OK");
             }
         }
 

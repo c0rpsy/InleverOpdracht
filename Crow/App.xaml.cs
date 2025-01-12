@@ -3,12 +3,10 @@ using Microsoft.Maui;
 using Crow.MVVM.Models.Services;
 
 namespace Crow;
-
 public partial class App : Application
 {
     public IServiceProvider Services { get; }
     public static DatabaseService DatabaseService { get; private set; }
-
 
     public App(IServiceProvider services, string dbPath)
     {
@@ -16,9 +14,8 @@ public partial class App : Application
 
         Services = services;
 
-        // Database service
+        // Initialize DatabaseService
         DatabaseService = new DatabaseService(dbPath);
-
 
         MainPage = new NavigationPage(new MainPage());
     }

@@ -3,6 +3,7 @@ using System.Windows.Input;
 using Crow.MVVM.Models;
 using Crow.Repositories;
 using Crow.Interfaces;
+using Crow.MVVM.Views;
 using Microsoft.Maui.Controls;
 
 namespace Crow.MVVM.ViewModels
@@ -40,7 +41,8 @@ namespace Crow.MVVM.ViewModels
 
         public ICommand SaveProfileCommand { get; }
         public ICommand LoadProfileCommand { get; }
-
+        public ICommand NavigateToThemesCommand { get; }
+        public ICommand NavigateToPicturesCommand { get; }
         private readonly IUserRepository _userRepository;
 
         // Constructor
@@ -54,6 +56,10 @@ namespace Crow.MVVM.ViewModels
 
             // Auto-load the profile
             _ = LoadProfileAsync();
+
+            // Other logic
+            NavigateToThemesCommand = new Command(() => { /* Navigate to Themes Page */ });
+            NavigateToPicturesCommand = new Command(() => { /* Navigate to Pictures Page */ });
         }
 
         // Load Profile
