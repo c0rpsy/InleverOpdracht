@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Crow.ViewModels"
+             x:Class="Crow.MVVM.Views.NewAssignmentPage"
+             Title="Create Assignment">
+
+    <ContentPage.BindingContext>
+        <vm:NewAssignmentViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Create a New Assignment"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <!-- Title -->
+        <Entry Placeholder="Assignment Title" Text="{Binding Title}" />
+
+        <!-- Photo Path -->
+        <Entry Placeholder="Photo Path or URL" Text="{Binding PhotoPath}" />
+
+        <!-- Save Button -->
+        <Button Text="Save Assignment"
+                Command="{Binding SaveAssignmentCommand}"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="10" />
+    </VerticalStackLayout>
+</ContentPage>

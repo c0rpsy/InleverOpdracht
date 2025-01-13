@@ -8,77 +8,49 @@ namespace Crow.MVVM.ViewModels
 {
     public class AssignmentViewModel : BaseViewModel
     {
-        private string _themeName;
-        public List<string> SelectedThemes { get; set; }
+        public ObservableCollection<Assignment> Assignments { get; set; }
 
-        public ObservableCollection<Assignment> Assignments { get; private set; }
-        public string ThemeName
-        {
-            get => _themeName;
-            set
-            {
-                _themeName = value;
-                OnPropertyChanged();
-                LoadAssignments();
-            }
-        }
+        public ICommand LikeCommand { get; }
+        public ICommand PostCommentCommand { get; }
 
-        public ICommand TakePhotoCommand { get; }
+        public ICommand NavigateToNewAssignmentCommand { get; }
 
         public AssignmentViewModel()
         {
             Assignments = new ObservableCollection<Assignment>();
-            TakePhotoCommand = new Command<int>(async (assignmentId) => await TakePhoto(assignmentId));
+
+            var initialAssignment = new Assignment
+            {
+                Title = "Nature Walk",
+                PhotoPath = "nature_image.png",
+                Comments = new ObservableCollection<string>(),
+                Likes = 0
+            };
+
+            Assignments.Add(initialAssignment);
+
+            LikeCommand = new Command<Assignment>(LikePhoto);
+            PostCommentCommand = new Command<Assignment>(PostComment);
+            NavigateToNewAssignmentCommand = new Command(async () => await App.Current.MainPage.Navigation.PushAsync(new NewAssignmentPage()));
         }
 
-        public void LoadAssignments()
+
+
+        private void LikePhoto(Assignment assignment)
         {
-            Assignments.Clear();
+            if (assignment == null) return;
 
-            foreach (var theme in SelectedThemes)
-            {
-                var assignments = App.DatabaseService.GetAssignmentsByTheme(theme);
-
-                foreach (var assignment in assignments)
-                {
-                    Assignments.Add(assignment);
-                }
-            }
+            assignment.Likes++;
+            OnPropertyChanged(nameof(Assignments));
         }
 
-        private async Task TakePhoto(int assignmentId)
+        private void PostComment(Assignment assignment)
         {
-            try
-            {
-                var photo = await MediaPicker.CapturePhotoAsync();
+            if (assignment == null || string.IsNullOrWhiteSpace(assignment.NewComment)) return;
 
-                if (photo != null)
-                {
-                    var photoPath = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
-
-                    using (var stream = await photo.OpenReadAsync())
-                    using (var fileStream = File.OpenWrite(photoPath))
-                    {
-                        await stream.CopyToAsync(fileStream);
-                    }
-
-                    // Update database with the photo path
-                    App.DatabaseService.SavePhotoPathForAssignment(assignmentId, photoPath);
-
-                    // Update the UI
-                    var assignment = Assignments.FirstOrDefault(a => a.Id == assignmentId);
-                    if (assignment != null)
-                    {
-                        assignment.PhotoPath = photoPath;
-                        OnPropertyChanged(nameof(Assignments));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle exceptions (e.g., user canceled photo)
-                Console.WriteLine($"Error taking photo: {ex.Message}");
-            }
+            assignment.Comments.Add(assignment.NewComment);
+            assignment.NewComment = string.Empty; // Clear the input field
+            OnPropertyChanged(nameof(Assignments));
         }
     }
 }

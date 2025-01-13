@@ -21,6 +21,15 @@
     </ContentPage.BindingContext>
 
     <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <!-- Header or Title -->
         <Label Text="Choose Your Theme"
                FontSize="24"
@@ -28,9 +37,8 @@
                HorizontalOptions="Center"
                Margin="0,10,0,20"
                Grid.Row="0"/>
-
         <!-- Grid for Themes -->
-        <CollectionView ItemsSource="{Binding Themes}" SelectionMode="None">
+        <CollectionView ItemsSource="{Binding Themes}" SelectionMode="None" Grid.Row="1" Grid.ColumnSpan="2">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" />
             </CollectionView.ItemsLayout>
@@ -50,5 +58,24 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <!-- See Assignments Button -->
+        <Button Text="See Assignments"
+                FontSize="18"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Command="{Binding SeeAssignmentsCommand}"
+                Grid.Row="2"
+                Grid.Column="0"/>
+        <Button Text="Create New Assignment"
+        Command="{Binding NavigateToNewAssignmentCommand}"
+        TextColor="White"
+        CornerRadius="10"
+        FontSize="18"
+        VerticalOptions="End"
+        Grid.Row="2"
+        Grid.Column="1"/>
     </Grid>
 </ContentPage>
+
+
+

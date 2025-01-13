@@ -15,7 +15,6 @@ namespace Crow.MVVM.Models.Services
             _database = new SQLiteConnection(dbPath);
 
             _database.CreateTable<Theme>();
-            _database.CreateTable<Assignment>(); // Ensure the Assignment table is created
             _database.CreateTable<UserProfile>(); // Ensure user table creation
             _database.CreateTable<UserTheme>(); // Create UserThemes table
 
@@ -32,10 +31,6 @@ namespace Crow.MVVM.Models.Services
             _database.Delete(theme);
         }
 
-        public List<Assignment> GetAssignmentsByTheme(string themeName)
-        {
-            return _database.Table<Assignment>().Where(a => a.Theme == themeName).ToList();
-        }
 
         public void SavePhotoPathForAssignment(int assignmentId, string photoPath)
         {
@@ -194,6 +189,13 @@ namespace Crow.MVVM.Models.Services
             _database.CreateTable<Theme>();
             SeedThemes();
         }
+
+        public void SaveAssignment(Assignment assignment)
+        {
+            _database.Insert(assignment);
+            Console.WriteLine($"Assignment '{assignment.Title}' saved to the database.");
+        }
+
 
     }
 }

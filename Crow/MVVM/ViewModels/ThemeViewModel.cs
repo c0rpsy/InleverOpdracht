@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Crow.MVVM.Views;
 using Crow.MVVM.Models;
 
 namespace Crow.ViewModels;
@@ -8,6 +9,7 @@ public class ThemeViewModel : BaseViewModel
 {
     public ObservableCollection<Theme> Themes { get; set; }
     public ICommand SelectThemeCommand { get; }
+    public ICommand SeeAssignmentsCommand { get; }
 
     public ThemeViewModel()
     {
@@ -16,6 +18,9 @@ public class ThemeViewModel : BaseViewModel
 
         // Command for selecting a theme
         SelectThemeCommand = new Command<Theme>(async (theme) => await SelectTheme(theme));
+
+        // Command for seeing assignments
+        SeeAssignmentsCommand = new Command(async (Assignment) => await SeeAssignments());
     }
 
     private void LoadThemes()
@@ -38,5 +43,15 @@ public class ThemeViewModel : BaseViewModel
 
         // Optionally, navigate to another page or display a success message
         await App.Current.MainPage.DisplayAlert("Theme Selected", $"{selectedTheme.Name} has been selected.", "OK");
+    }
+
+    private async Task SeeAssignments()
+    {
+        var selectedThemes = Themes.Select(t => t.Name).ToList();
+        var mainPage = App.Current?.Windows[0]?.Page;
+        if (mainPage != null)
+        {
+            await mainPage.Navigation.PushAsync(new AssignmentPage());
+        }
     }
 }
