@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Crow.MVVM.ViewModels"
+             x:Class="Crow.MVVM.Views.AssignmentPage"
+             Title="Assignments">
+
+    <ContentPage.BindingContext>
+        <vm:AssignmentViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="20">
+            <!-- Header -->
+            <Label Text="Assignments"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- List of Assignments -->
+            <CollectionView ItemsSource="{Binding Assignments}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="10" Padding="10" BackgroundColor="#f9f9f9">
+                            <Image Source="{Binding PhotoPath}" HeightRequest="200" Aspect="AspectFill" />
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+
+                            <!-- Like Button -->
+                            <Button Text="❤️ Like"
+                                    Command="{Binding BindingContext.LikeCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding .}" />
+
+                            <!-- Comment Section -->
+                            <Entry Placeholder="Leave a comment..." Text="{Binding NewComment}" />
+                            <Button Text="Post Comment"
+                                    Command="{Binding BindingContext.PostCommentCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding .}" />
+
+                            <!-- Comments -->
+                            <Label Text="Comments:" FontSize="16" FontAttributes="Bold" />
+                            <CollectionView ItemsSource="{Binding Comments}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Text="{Binding}" FontSize="14" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
