@@ -1,43 +1,42 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Crow;
 using Crow.MVVM.Models;
-using Crow.MVVM.Views;
-using Microsoft.Maui.Controls;
 
-namespace Crow.ViewModels
+namespace Crow.ViewModels;
+
+public class ThemeViewModel : BaseViewModel
 {
-    public class ThemeViewModel : BaseViewModel
+    public ObservableCollection<Theme> Themes { get; set; }
+    public ICommand SelectThemeCommand { get; }
+
+    public ThemeViewModel()
     {
-        public ObservableCollection<Theme> Themes { get; set; }
+        // Load themes from the database
+        LoadThemes();
 
-        public ICommand NavigateToAssignmentCommand { get; }
+        // Command for selecting a theme
+        SelectThemeCommand = new Command<Theme>(async (theme) => await SelectTheme(theme));
+    }
 
-        public ThemeViewModel()
-        {
-            // Initialize the six predetermined themes
-            Themes = new ObservableCollection<Theme>
-            {
-                new Theme { Name = "Pets", IconPath = "pet_image.png" },
-                new Theme { Name = "Nature", IconPath = "nature_image.png" },
-                new Theme { Name = "Flowers", IconPath = "flower_image.png" },
-                new Theme { Name = "Macro", IconPath = "macro_image.png" },
-                new Theme { Name = "People", IconPath = "people_image.png" },
-                new Theme { Name = "Travel", IconPath = "travel_image.png" },
-            };
+    private void LoadThemes()
+    {
+        // Load all themes from the database
+        var themesFromDatabase = App.DatabaseService.GetThemes();
 
-            // Command for navigating to assignment page
-            NavigateToAssignmentCommand = new Command<Theme>(async (theme) => await NavigateToAssignment(theme));
-        }
+        // Initialize Themes ObservableCollection
+        Themes = new ObservableCollection<Theme>(themesFromDatabase);
+    }
 
-        private async Task NavigateToAssignment(Theme selectedTheme)
-        {
-            if (selectedTheme == null) return;
+    private async Task SelectTheme(Theme selectedTheme)
+    {
+        if (selectedTheme == null) return;
 
-            // Navigate to the AssignmentPage with the selected theme
-            await App.Current.MainPage.Navigation.PushAsync(new AssignmentPage(selectedTheme.Name));
-        }
+        string username = "current_user"; // Replace with actual logged-in user logic
+
+        // Add the selected theme to the user's profile in the database
+        await App.DatabaseService.AddThemeToUser(username, selectedTheme.Name);
+
+        // Optionally, navigate to another page or display a success message
+        await App.Current.MainPage.DisplayAlert("Theme Selected", $"{selectedTheme.Name} has been selected.", "OK");
     }
 }
-
-

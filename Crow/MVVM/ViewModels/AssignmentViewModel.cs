@@ -9,6 +9,7 @@ namespace Crow.MVVM.ViewModels
     public class AssignmentViewModel : BaseViewModel
     {
         private string _themeName;
+        public List<string> SelectedThemes { get; set; }
 
         public ObservableCollection<Assignment> Assignments { get; private set; }
         public string ThemeName
@@ -30,15 +31,18 @@ namespace Crow.MVVM.ViewModels
             TakePhotoCommand = new Command<int>(async (assignmentId) => await TakePhoto(assignmentId));
         }
 
-        private void LoadAssignments()
+        public void LoadAssignments()
         {
-            // Fetch assignments from the database
-            var assignments = App.DatabaseService.GetAssignmentsByTheme(ThemeName);
-
             Assignments.Clear();
-            foreach (var assignment in assignments)
+
+            foreach (var theme in SelectedThemes)
             {
-                Assignments.Add(assignment);
+                var assignments = App.DatabaseService.GetAssignmentsByTheme(theme);
+
+                foreach (var assignment in assignments)
+                {
+                    Assignments.Add(assignment);
+                }
             }
         }
 

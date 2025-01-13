@@ -2,6 +2,7 @@
 using Crow.Interfaces;
 using Crow.Repositories;
 using Crow;
+using Crow.MVVM.Models.Services; // Add this using directive
 
 public static class MauiProgram
 {
@@ -11,7 +12,10 @@ public static class MauiProgram
 
         // Register dbPath as a service
         var dbPath = Path.Combine(FileSystem.AppDataDirectory, "app_database.db");
-        builder.Services.AddSingleton(dbPath);
+        builder.Services.AddSingleton(new DatabaseService(dbPath));
+
+        // Register the string type with a specific value
+        builder.Services.AddSingleton<string>(dbPath);
 
         // Register App
         builder.Services.AddSingleton<App>();

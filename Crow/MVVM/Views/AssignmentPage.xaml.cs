@@ -1,15 +1,23 @@
 using Crow.MVVM.ViewModels;
+using Crow.MVVM.Models;
 namespace Crow.MVVM.Views;
 
 public partial class AssignmentPage : ContentPage
 {
-    public AssignmentPage(string themeName)
+
+    private List<string> selectedThemes;
+
+    public AssignmentPage(List<string> themes)
     {
         InitializeComponent();
+        selectedThemes = themes; // Assign the passed themes to the local variable
 
-        if (BindingContext is AssignmentViewModel viewModel)
+        // Set the ViewModel's themes and load assignments
+        var viewModel = BindingContext as AssignmentViewModel;
+        if (viewModel != null)
         {
-            viewModel.ThemeName = themeName;
+            viewModel.SelectedThemes = selectedThemes;
+            viewModel.LoadAssignments();
         }
     }
 }

@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace Crow.MVVM.Models
 {
-    public class Theme
+    public class UserTheme
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string IconPath { get; set; }
-        [Ignore]
-        public bool IsSelected { get; set; } // Track selection state
+
+        [NotNull]
+        public string Username { get; set; }
+
+        [NotNull]
+        public string ThemeName { get; set; }
     }
+
 }
