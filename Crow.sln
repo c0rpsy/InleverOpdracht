@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crow", "Crow\Crow.csproj", "{536C7EE2-48DC-4207-A070-CE81FA2FADD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrowAPI", "CrowAPI\CrowAPI.csproj", "{A41FA433-13B9-4455-91DB-EFF505918736}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,10 @@ Global
 		{536C7EE2-48DC-4207-A070-CE81FA2FADD7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{536C7EE2-48DC-4207-A070-CE81FA2FADD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{536C7EE2-48DC-4207-A070-CE81FA2FADD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41FA433-13B9-4455-91DB-EFF505918736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41FA433-13B9-4455-91DB-EFF505918736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41FA433-13B9-4455-91DB-EFF505918736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41FA433-13B9-4455-91DB-EFF505918736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
